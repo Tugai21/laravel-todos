@@ -39,6 +39,9 @@ new class extends Component
                     <x-nav-link :href="route('photos.index')" :active="request()->routeIs('photos.*')">
                      📸 {{ __('Photos') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.photos.index')" :active="request()->routeIs('admin.photos.*')">
+                     🛠 Admin Photos
+                    </x-nav-link>
                 </div>
             </div>
 
