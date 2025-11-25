@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;    
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\PhotoAdminController;
+use App\Http\Controllers\AnimalController;
 
 Route::view('/', 'welcome');
 
@@ -33,6 +34,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/photos/{photo}/edit', [PhotoAdminController::class, 'edit'])->name('admin.photos.edit');
     Route::patch('/admin/photos/{photo}', [PhotoAdminController::class, 'update'])->name('admin.photos.update');
     Route::delete('/admin/photos/{photo}', [PhotoAdminController::class, 'destroy'])->name('admin.photos.destroy');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/admin/animals', AnimalController::class)
+        ->names('admin.animals');
 });
 
 require __DIR__.'/auth.php';
